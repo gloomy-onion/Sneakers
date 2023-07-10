@@ -10,20 +10,20 @@ function App() {
     return (
         <div>
             <div className={'wrapper clear'}>
-                <header>
+                <header className={'headerAll'}>
                     <div className={'headerLeft'}>
                         <img alt={''} src={logo}/>
                         <div className={'headerInfo'}>
-                            <h3>React Sneakers</h3>
-                            <p>Магазин кроссовок</p>
+                            <h3 className={'reactSneakers'}>React Sneakers</h3>
+                            <p className={'sneakerShop'}>Магазин кроссовок</p>
                         </div>
                     </div>
-                    <ul>
+                    <ul className={'headerRight'}>
                         <li className={''}>
                             <img alt={''} src={cart}/>
-                            <span>2673 руб.</span>
+                            <span className={'cartMoney'}>2673 руб.</span>
                         </li>
-                        <li>
+                        <li className={''}>
                             <img alt={''} src={profile}/>
                         </li>
                     </ul>
@@ -33,11 +33,11 @@ function App() {
                     <div className={'sneakers'}>
                         <div className={'card'}>
                             <img width={133} height={112} alt={''} src={sneakers1}/>
-                            <h5>Мужские кроссовки Nike Blazer
+                            <h5 className={'sneakerDescription'}>Мужские кроссовки Nike Blazer
                             </h5>
                             <div className={'cardBottom'}>
                                 <div className={'cardBottomText'}>
-                                    <span>Цена:</span>
+                                    <span className={'price'}>Цена:</span>
                                     <b>5 руб.</b>
                                 </div>
                                 <button className={'addButton'}>
@@ -47,11 +47,11 @@ function App() {
                         </div>
                         <div className={'card'}>
                             <img width={133} height={112} alt={''} src={sneakers2}/>
-                            <h5>Мужские кроссовки Nike Blazer
+                            <h5 className={'sneakerDescription'}>Мужские кроссовки Nike Blazer
                             </h5>
                             <div className={'cardBottom'}>
                                 <div className={'cardBottomText'}>
-                                    <span>Цена:</span>
+                                    <span className={'price'}>Цена:</span>
                                     <b>5 руб.</b>
                                 </div>
                                 <button className={'addButton'}>
@@ -61,11 +61,11 @@ function App() {
                         </div>
                         <div className={'card'}>
                             <img width={133} height={112} alt={''} src={sneakers3}/>
-                            <h5>Мужские кроссовки Nike Blazer
+                            <h5 className={'sneakerDescription'}>Мужские кроссовки Nike Blazer
                             </h5>
                             <div className={'cardBottom'}>
                                 <div className={'cardBottomText'}>
-                                    <span>Цена:</span>
+                                    <span className={'price'}>Цена:</span>
                                     <b>5 руб.</b>
                                 </div>
                                 <button className={'addButton'}>
