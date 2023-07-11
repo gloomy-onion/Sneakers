@@ -5,6 +5,10 @@ import sneakers1 from './img/sneakers1.jpg';
 import sneakers2 from './img/sneakers2.jpg';
 import sneakers3 from './img/sneakers3.jpg';
 import addButton from './img/addButton.svg';
+import addButtonActive from './img/addButtonActive.svg';
+import heartLiked from './img/heartLiked.svg';
+import heartUnliked from './img/heartUnliked.svg';
+import searchMagnifier from './img/searchMagnifier.svg';
 
 function App() {
     return (
@@ -29,9 +33,15 @@ function App() {
                     </ul>
                 </header>
                 <div className={'content'}>
-                    <h1>Все кроссовки</h1>
+                    <div className={'contentUpper'}><h1>Все кроссовки</h1>
+                        <div className={'search'}>
+                            <img alt={'Search'} src={searchMagnifier}/>
+                            <input placeholder={'Поиск...'} className={'searchInput'}/>
+                        </div>
+                    </div>
                     <div className={'sneakers'}>
                         <div className={'card'}>
+                            <div className={'favourite'}><img src={heartUnliked} alt={'Not liked'}/></div>
                             <img width={133} height={112} alt={''} src={sneakers1}/>
                             <h5 className={'sneakerDescription'}>Мужские кроссовки Nike Blazer
                             </h5>
