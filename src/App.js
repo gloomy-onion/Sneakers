@@ -5,8 +5,7 @@ import sneakers1 from './img/sneakers1.jpg';
 import sneakers2 from './img/sneakers2.jpg';
 import sneakers3 from './img/sneakers3.jpg';
 import addButton from './img/addButton.svg';
-import addButtonActive from './img/addButtonActive.svg';
-import heartLiked from './img/heartLiked.svg';
+import cross from './img/cross.svg'
 import heartUnliked from './img/heartUnliked.svg';
 import searchMagnifier from './img/searchMagnifier.svg';
 
@@ -14,6 +13,29 @@ function App() {
     return (
         <div>
             <div className={'wrapper clear'}>
+                <div className={'overlay'}>
+                    <div className={'drawer'}>
+                        <h2 className={'drawerCartName'}>Корзина</h2>
+                        <div className={'cartItem'}>
+                            <img alt={''} src={sneakers1} className={'cartItemImg'}/>
+                           <div className={'cartItemDescription'}> <p className={'cartItemName'}>
+                                Мужские кроссовки Nike Blazer
+                            </p>
+                            <b> 5 руб.</b>
+                           </div>
+                            <img alt={''} src={cross}/>
+                        </div>
+                        <div className={'cartItem'}>
+                            <img alt={''} src={sneakers2} className={'cartItemImg'}/>
+                            <div className={'cartItemDescription'}> <p className={'cartItemName'}>
+                                Мужские кроссовки Nike Blazer
+                            </p>
+                                <b> 5 руб.</b>
+                            </div>
+                            <img alt={''} src={cross}/>
+                        </div>
+                    </div>
+                </div>
                 <header className={'headerAll'}>
                     <div className={'headerLeft'}>
                         <img alt={''} src={logo}/>
