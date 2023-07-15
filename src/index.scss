@@ -35,6 +35,25 @@ body {
   box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.3);
   height: 100%;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .cartBottomText {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    max-height: 30px;
+
+  }
+
+  .orderButton {
+    border: none;
+    background: none;
+    margin: 10px 0;
+    padding: 0;
+  }
 }
 
 .drawerCartName {

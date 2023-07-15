@@ -5,7 +5,8 @@ import sneakers1 from './img/sneakers1.jpg';
 import sneakers2 from './img/sneakers2.jpg';
 import sneakers3 from './img/sneakers3.jpg';
 import addButton from './img/addButton.svg';
-import cross from './img/cross.svg'
+import cross from './img/cross.svg';
+import orderCart from './img/orderCart.svg';
 import heartUnliked from './img/heartUnliked.svg';
 import searchMagnifier from './img/searchMagnifier.svg';
 
@@ -15,24 +16,37 @@ function App() {
             <div className={'wrapper clear'}>
                 <div className={'overlay'}>
                     <div className={'drawer'}>
-                        <h2 className={'drawerCartName'}>Корзина</h2>
-                        <div className={'cartItem'}>
-                            <img alt={''} src={sneakers1} className={'cartItemImg'}/>
-                           <div className={'cartItemDescription'}> <p className={'cartItemName'}>
-                                Мужские кроссовки Nike Blazer
-                            </p>
-                            <b> 5 руб.</b>
-                           </div>
-                            <img alt={''} src={cross}/>
-                        </div>
-                        <div className={'cartItem'}>
-                            <img alt={''} src={sneakers2} className={'cartItemImg'}/>
-                            <div className={'cartItemDescription'}> <p className={'cartItemName'}>
-                                Мужские кроссовки Nike Blazer
-                            </p>
-                                <b> 5 руб.</b>
+                        <div className={'cartTop'}>
+                            <h2 className={'drawerCartName'}>Корзина</h2>
+                            <div className={'cartItem'}>
+                                <img alt={''} src={sneakers1} className={'cartItemImg'}/>
+                                <div className={'cartItemDescription'}><p className={'cartItemName'}>
+                                    Мужские кроссовки Nike Blazer
+                                </p>
+                                    <b> 5 руб.</b>
+                                </div>
+                                <img alt={''} src={cross}/>
                             </div>
-                            <img alt={''} src={cross}/>
+                            <div className={'cartItem'}>
+                                <img alt={''} src={sneakers2} className={'cartItemImg'}/>
+                                <div className={'cartItemDescription'}><p className={'cartItemName'}>
+                                    Мужские кроссовки Nike Blazer
+                                </p>
+                                    <b> 5 руб.</b>
+                                </div>
+                                <img alt={''} src={cross}/>
+                            </div>
+                        </div>
+                        <div className={'cartBottom'}>
+                            <div className={'cartBottomText'}>
+                                <p>Итого:</p>
+                                <b>10 руб.</b>
+                            </div>
+                            <div className={'cartBottomText'}>
+                                <p>Налог:</p>
+                                <b>1 руб.</b>
+                            </div>
+                            <button className={'orderButton '}><img alt={''} src={orderCart}/></button>
                         </div>
                     </div>
                 </div>
