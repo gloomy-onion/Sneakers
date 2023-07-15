@@ -39,13 +39,20 @@ body {
   flex-direction: column;
   justify-content: space-between;
 
+  .closeButton {
+    border: none;
+    background: none;
+    margin: 10px 0;
+    padding: 0;
+    cursor: pointer;
+  }
+
   .cartBottomText {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     max-height: 30px;
-
   }
 
   .orderButton {
@@ -53,12 +60,16 @@ body {
     background: none;
     margin: 10px 0;
     padding: 0;
+    cursor: pointer;
   }
 }
 
 .drawerCartName {
   margin: 0;
   font-size: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .headerAll {

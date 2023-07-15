@@ -17,7 +17,11 @@ function App() {
                 <div className={'overlay'}>
                     <div className={'drawer'}>
                         <div className={'cartTop'}>
-                            <h2 className={'drawerCartName'}>Корзина</h2>
+                            <h2 className={'drawerCartName'}> Корзина
+                                <button className={'closeButton'}>
+                                    <img alt={''} src={cross}/>
+                                </button>
+                            </h2>
                             <div className={'cartItem'}>
                                 <img alt={''} src={sneakers1} className={'cartItemImg'}/>
                                 <div className={'cartItemDescription'}><p className={'cartItemName'}>
@@ -25,7 +29,7 @@ function App() {
                                 </p>
                                     <b> 5 руб.</b>
                                 </div>
-                                <img alt={''} src={cross}/>
+                                <button className={'closeButton'}><img alt={''} src={cross}/></button>
                             </div>
                             <div className={'cartItem'}>
                                 <img alt={''} src={sneakers2} className={'cartItemImg'}/>
@@ -34,7 +38,7 @@ function App() {
                                 </p>
                                     <b> 5 руб.</b>
                                 </div>
-                                <img alt={''} src={cross}/>
+                                <button className={'closeButton'}><img alt={''} src={cross}/></button>
                             </div>
                         </div>
                         <div className={'cartBottom'}>
