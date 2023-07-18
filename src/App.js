@@ -22,23 +22,25 @@ function App() {
                                     <img alt={''} src={cross}/>
                                 </button>
                             </h2>
-                            <div className={'cartItem'}>
-                                <img alt={''} src={sneakers1} className={'cartItemImg'}/>
-                                <div className={'cartItemDescription'}><p className={'cartItemName'}>
-                                    Мужские кроссовки Nike Blazer
-                                </p>
-                                    <b> 5 руб.</b>
+                            <div className={'cartItems'}>
+                                <div className={'cartItem'}>
+                                    <img alt={''} src={sneakers1} className={'cartItemImg'}/>
+                                    <div className={'cartItemDescription'}><p className={'cartItemName'}>
+                                        Мужские кроссовки Nike Blazer
+                                    </p>
+                                        <b> 5 руб.</b>
+                                    </div>
+                                    <button className={'closeButton'}><img alt={''} src={cross}/></button>
                                 </div>
-                                <button className={'closeButton'}><img alt={''} src={cross}/></button>
-                            </div>
-                            <div className={'cartItem'}>
-                                <img alt={''} src={sneakers2} className={'cartItemImg'}/>
-                                <div className={'cartItemDescription'}><p className={'cartItemName'}>
-                                    Мужские кроссовки Nike Blazer
-                                </p>
-                                    <b> 5 руб.</b>
+                                <div className={'cartItem'}>
+                                    <img alt={''} src={sneakers2} className={'cartItemImg'}/>
+                                    <div className={'cartItemDescription'}><p className={'cartItemName'}>
+                                        Мужские кроссовки Nike Blazer
+                                    </p>
+                                        <b> 5 руб.</b>
+                                    </div>
+                                    <button className={'closeButton'}><img alt={''} src={cross}/></button>
                                 </div>
-                                <button className={'closeButton'}><img alt={''} src={cross}/></button>
                             </div>
                         </div>
                         <div className={'cartBottom'}>

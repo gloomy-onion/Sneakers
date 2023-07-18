@@ -203,7 +203,9 @@ body {
   flex-wrap: wrap;
   //мне не очень нравится что здесь после последней карточки есть отступ и получается несеммитрично
 }
-
+.cartItems{
+  overflow: auto;
+}
 
 .cartItem {
   display: flex;
