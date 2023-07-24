@@ -29,7 +29,7 @@ body {
 
 .drawer {
   position: absolute;
-  width: 350px;
+  width: 360px;
   right: 0;
   background: #FFFFFF;
   box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.3);
@@ -39,12 +39,42 @@ body {
   flex-direction: column;
   justify-content: space-between;
 
+  //как будто ты захотел чтобы я отправилась в космос на своей горящей жопе от верстания
+  //ебаная кнопка У МЕНЯ БЛИН НАПИСАНО что ширина 32\высота 32 а она нахуй
+  //в реале 29.58 блин ширина высота 32 и эти три пикселя ебать как видно
+
   .closeButton {
-    border: none;
-    background: none;
-    margin: 10px 0;
-    padding: 0;
+    border: 1px solid #f2f2f2;
+    border-radius: 8px;
     cursor: pointer;
+    height: 32px;
+    width: 32px;
+    opacity: 0.6;
+    background: none;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &:before, &:after {
+      position: absolute;
+      content: ' ';
+      height: 11px;
+      width: 1px;
+      background-color: #333;
+    }
+
+    &:before {
+      transform: rotate(45deg);
+    }
+
+    &:after {
+      transform: rotate(-45deg);
+    }
   }
 
   .cartBottomText {
@@ -148,8 +178,9 @@ body {
     padding: 20px;
     max-width: 200px;
     max-height: 280px;
-    margin: 0 0 40px 0;
     transition: box-shadow 200ms ease-in-out, transform 200ms ease-in-out;
+    flex-grow: 1;
+
 
     &:hover {
       box-shadow: 0px 14px 30px rgba(0, 0, 0, 0.05);
@@ -185,12 +216,16 @@ body {
         cursor: pointer;
         height: 32px;
         width: 32px;
+        font-size: 20px;
+        color: darkgray;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
 
       .price {
         text-transform: uppercase;
         color: #BDBDBD;
-
       }
     }
   }
@@ -201,9 +236,10 @@ body {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  //мне не очень нравится что здесь после последней карточки есть отступ и получается несеммитрично
+  gap: 40px;
 }
-.cartItems{
+
+.cartItems {
   overflow: auto;
 }
 
@@ -213,6 +249,8 @@ body {
   padding: 10px;
   border: 1px solid #f8f8f8;
   border-radius: 20px;
+  justify-content: space-between;
+  align-items: center;
 
   .cartItemImg {
     max-width: 80px;
@@ -229,4 +267,34 @@ body {
       padding: 0;
     }
   }
+}
+
+.heartUnliked {
+  position: absolute;
+  width: 45px;
+  height: 40px;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.heartUnliked:before, .heartUnliked:after {
+  position: absolute;
+  content: "";
+  left: 18px;
+  top: 0;
+  width: 20px;
+  height: 30px;
+  background: #fccaca;
+  border-radius: 20px 20px 0 0;
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+  margin: 5px;
+}
+
+.heartUnliked:after {
+  left: 0;
+  transform: rotate(45deg);
+  transform-origin: 100% 100%;
 }

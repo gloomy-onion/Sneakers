@@ -4,10 +4,7 @@ import cart from './img/cart.svg';
 import sneakers1 from './img/sneakers1.jpg';
 import sneakers2 from './img/sneakers2.jpg';
 import sneakers3 from './img/sneakers3.jpg';
-import addButton from './img/addButton.svg';
-import cross from './img/cross.svg';
 import orderCart from './img/orderCart.svg';
-import heartUnliked from './img/heartUnliked.svg';
 import searchMagnifier from './img/searchMagnifier.svg';
 
 function App() {
@@ -19,7 +16,6 @@ function App() {
                         <div className={'cartTop'}>
                             <h2 className={'drawerCartName'}> Корзина
                                 <button className={'closeButton'}>
-                                    <img alt={''} src={cross}/>
                                 </button>
                             </h2>
                             <div className={'cartItems'}>
@@ -30,7 +26,7 @@ function App() {
                                     </p>
                                         <b> 5 руб.</b>
                                     </div>
-                                    <button className={'closeButton'}><img alt={''} src={cross}/></button>
+                                    <button className={'closeButton'}></button>
                                 </div>
                                 <div className={'cartItem'}>
                                     <img alt={''} src={sneakers2} className={'cartItemImg'}/>
@@ -39,7 +35,7 @@ function App() {
                                     </p>
                                         <b> 5 руб.</b>
                                     </div>
-                                    <button className={'closeButton'}><img alt={''} src={cross}/></button>
+                                    < button className={'closeButton'}/>
                                 </div>
                             </div>
                         </div>
@@ -83,7 +79,7 @@ function App() {
                     </div>
                     <div className={'sneakers'}>
                         <div className={'card'}>
-                            <div className={'favourite'}><img src={heartUnliked} alt={'Not liked'}/></div>
+                            <div className={'heartUnliked'}></div>
                             <img width={133} height={112} alt={''} src={sneakers1}/>
                             <h5 className={'sneakerDescription'}>Мужские кроссовки Nike Blazer
                             </h5>
@@ -93,7 +89,7 @@ function App() {
                                     <b>5 руб.</b>
                                 </div>
                                 <button className={'addButton'}>
-                                    <img width={25} height={25} alt={''} src={addButton}/>
+                                    +
                                 </button>
                             </div>
                         </div>
@@ -107,7 +103,7 @@ function App() {
                                     <b>5 руб.</b>
                                 </div>
                                 <button className={'addButton'}>
-                                    <img width={25} height={25} alt={''} src={addButton}/>
+                                    +
                                 </button>
                             </div>
                         </div>
@@ -121,7 +117,7 @@ function App() {
                                     <b>5 руб.</b>
                                 </div>
                                 <button className={'addButton'}>
-                                    <img width={25} height={25} alt={''} src={addButton}/>
+                                    +
                                 </button>
                             </div>
                         </div>
