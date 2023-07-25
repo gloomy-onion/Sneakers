@@ -2,49 +2,49 @@ import React from 'react';
 import sneakers1 from '../../img/sneakers1.jpg';
 import sneakers2 from '../../img/sneakers2.jpg';
 import orderCart from '../../img/orderCart.svg';
-
+import styles from './Drawer.module.scss';
 
 const Drawer = () => {
 
     return (
-        <div className={'overlay'}>
-            <div className={'drawer'}>
-                <div className={'cartTop'}>
-                    <h2 className={'drawerCartName'}> Корзина
-                        <button className={'closeButton'}>
+        <div className={styles.overlay}>
+            <div className={styles.drawer}>
+                <div className={styles.cartTop}>
+                    <h2 className={styles.drawerCartName}> Корзина
+                        <button className={styles.closeButton}>
                         </button>
                     </h2>
-                    <div className={'cartItems'}>
-                        <div className={'cartItem'}>
-                            <img alt={''} src={sneakers1} className={'cartItemImg'}/>
-                            <div className={'cartItemDescription'}><p className={'cartItemName'}>
+                    <div className={styles.cartItems}>
+                        <div className={styles.cartItem}>
+                            <img alt={''} src={sneakers1} className={styles.cartItemImg}/>
+                            <div className={styles.cartItemDescription}><p className={styles.cartItemName}>
                                 Мужские кроссовки Nike Blazer
                             </p>
                                 <b> 5 руб.</b>
                             </div>
-                            <button className={'closeButton'}></button>
+                            <button className={styles.closeButton}></button>
                         </div>
-                        <div className={'cartItem'}>
-                            <img alt={''} src={sneakers2} className={'cartItemImg'}/>
-                            <div className={'cartItemDescription'}><p className={'cartItemName'}>
+                        <div className={styles.cartItem}>
+                            <img alt={''} src={sneakers2} className={styles.cartItemImg}/>
+                            <div className={styles.cartItemDescription}><p className={styles.cartItemName}>
                                 Мужские кроссовки Nike Blazer
                             </p>
                                 <b> 5 руб.</b>
                             </div>
-                            < button className={'closeButton'}/>
+                            < button className={styles.closeButton}/>
                         </div>
                     </div>
                 </div>
-                <div className={'cartBottom'}>
-                    <div className={'cartBottomText'}>
+                <div className={styles.cartBottom}>
+                    <div className={styles.cartBottomText}>
                         <p>Итого:</p>
                         <b>10 руб.</b>
                     </div>
-                    <div className={'cartBottomText'}>
+                    <div className={styles.cartBottomText}>
                         <p>Налог:</p>
                         <b>1 руб.</b>
                     </div>
-                    <button className={'orderButton '}><img alt={''} src={orderCart}/></button>
+                    <button className={styles.orderButton}><img alt={''} src={orderCart}/></button>
                 </div>
             </div>
         </div>);

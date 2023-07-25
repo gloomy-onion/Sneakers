@@ -1,20 +1,20 @@
 import React from 'react';
-import sneakers1 from '../../img/sneakers1.jpg';
+import styles from './Card.module.scss';
 
-const Card = () => {
-
+const Card = (props) => {
+    const {image, name, price} = props;
     return (
-        <div className={'card'}>
-            <div className={'heartUnliked'}></div>
-            <img width={133} height={112} alt={''} src={sneakers1}/>
-            <h5 className={'sneakerDescription'}>Мужские кроссовки Nike Blazer
+        <div className={styles.card}>
+            <div className={styles.heartUnliked}></div>
+            <img width={133} height={112} alt={''} src={image}/>
+            <h5 className={styles.sneakerDescription}>{name}
             </h5>
-            <div className={'cardBottom'}>
-                <div className={'cardBottomText'}>
-                    <span className={'price'}>Цена:</span>
-                    <b>5 руб.</b>
+            <div className={styles.cardBottom}>
+                <div className={styles.cardBottomText}>
+                    <span className={styles.price}>Цена:</span>
+                    <b>{price}</b>
                 </div>
-                <button className={'addButton'}>
+                <button className={styles.addButton}>
                     +
                 </button>
             </div>
