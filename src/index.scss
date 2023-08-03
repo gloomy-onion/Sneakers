@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap');
+@import "styles/main";
 
 body {
   font-family: 'Inter';
@@ -10,7 +11,7 @@ body {
   max-width: 1080px;
   left: 85px;
   top: 85px;
-  margin: 50px auto;
+  margin: 20px auto;
   background: #FFFFFF;
   box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.04);
   border-radius: 20px;
@@ -28,10 +29,11 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    .cartMoney {
+.cartImg{
+  cursor: pointer;
+  .cartMoney {
       padding: 0 20px 0 5px;
-    }
+    }}
   }
 
   .headerLeft {

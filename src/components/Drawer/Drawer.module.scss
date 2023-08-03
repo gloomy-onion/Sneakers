@@ -1,6 +1,6 @@
 .drawer {
   position: absolute;
-  width: 360px;
+  width: 400px;
   right: 0;
   background: #FFFFFF;
   box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.3);
@@ -10,43 +10,6 @@
   flex-direction: column;
   justify-content: space-between;
 
-  //как будто ты захотел чтобы я отправилась в космос на своей горящей жопе от верстания
-  //ебаная кнопка У МЕНЯ БЛИН НАПИСАНО что ширина 32\высота 32 а она нахуй
-  //в реале 29.58 блин ширина высота 32 и эти три пикселя ебать как видно
-
-  .closeButton {
-    border: 1px solid #f2f2f2;
-    border-radius: 8px;
-    cursor: pointer;
-    height: 32px;
-    width: 32px;
-    opacity: 0.6;
-    background: none;
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    &:hover {
-      opacity: 1;
-    }
-
-    &:before, &:after {
-      position: absolute;
-      content: ' ';
-      height: 11px;
-      width: 1px;
-      background-color: #333;
-    }
-
-    &:before {
-      transform: rotate(45deg);
-    }
-
-    &:after {
-      transform: rotate(-45deg);
-    }
-  }
 
   .cartBottomText {
     display: flex;
@@ -62,6 +25,7 @@
     margin: 10px 0;
     padding: 0;
     cursor: pointer;
+
   }
 }
 
@@ -73,44 +37,42 @@
   align-items: center;
 }
 
-.overlay {
-  display: none;
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-}
 
 .cartItems {
   overflow: auto;
 }
 
-.cartItem {
-  display: flex;
-  margin: 20px 0 0 0;
+.closeButton {
+  border: 1px solid #f2f2f2;
+  border-radius: 8px;
+  cursor: pointer;
+  height: 32px;
+  width: 32px;
+  opacity: 0.6;
+  background: none;
   padding: 10px;
-  border: 1px solid #f8f8f8;
-  border-radius: 20px;
-  justify-content: space-between;
+  display: flex;
+  justify-content: center;
   align-items: center;
 
-  .cartItemImg {
-    max-width: 80px;
-    max-height: 60px;
-    padding: 0 10px 0 0;
+  &:hover {
+    opacity: 1;
   }
 
-  .cartItemDescription {
-    display: flex;
-    flex-direction: column;
+  &:before, &:after {
+    position: absolute;
+    content: ' ';
+    height: 11px;
+    width: 1px;
+    background-color: #333;
+  }
 
-    .cartItemName {
-      margin: 0;
-      padding: 0;
-    }
+  &:before {
+    transform: rotate(45deg);
+  }
+
+  &:after {
+    transform: rotate(-45deg);
   }
 }
 
