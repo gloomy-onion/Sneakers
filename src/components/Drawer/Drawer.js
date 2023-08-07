@@ -2,10 +2,10 @@ import React from 'react'
 import orderCart from '../../img/orderCart.svg'
 import styles from './Drawer.module.scss'
 import CartItem from './CartItems/CartItem'
+import emptyCart from '../../img/emptyCart.png'
 
 const Drawer = (props) => {
-  const { onClose, items } = props
-  console.log(items)
+  const { onClose, items, onRemove } = props
   return (
     <div className={styles.drawer}>
       <div className={styles.cartTop}>
@@ -13,18 +13,32 @@ const Drawer = (props) => {
           Корзина
           <button className={styles.closeButton} onClick={onClose} />
         </h2>
-        <div className={styles.cartItems}>
-          {items.map((item, index) => {
-            return (
-              <CartItem
-                key={index}
-                image={item.image}
-                price={item.price}
-                name={item.name}
-              />
-            )
-          })}
-        </div>
+
+        {items ? (
+          <div className={styles.emptyCart}>
+            <img src={emptyCart} className={styles.emptyCartImg} />
+            <h3>Ваша корзина пустая </h3>
+            <button className={styles.greenCartButton} onClick={onClose}>
+              Вернуться назад
+            </button>
+          </div>
+        ) : (
+          <div className={styles.cartItems}>
+            {items.map((item, index) => {
+              return (
+                <CartItem
+                  key={index}
+                  id={item.id}
+                  image={item.image}
+                  price={item.price}
+                  name={item.name}
+                  onRemove={() => onRemove(item.id)}
+                />
+              )
+            })}
+          </div>
+        //я донт андерстенд почему у меня показывает только пустую корзину вот зе фак
+        )}
       </div>
       <div className={styles.cartBottom}>
         <div className={styles.cartBottomText}>
@@ -35,9 +49,7 @@ const Drawer = (props) => {
           <p>Налог:</p>
           <b>1 руб.</b>
         </div>
-        <button className={styles.orderButton}>
-          <img alt={''} src={orderCart} />
-        </button>
+        <button className={styles.greenCartButton}>Оформить заказ</button>
       </div>
     </div>
   )

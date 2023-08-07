@@ -1,0 +1,45 @@
+.headerAll {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  border-bottom: 1px solid #dedede;
+
+  .headerRight {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style-type: none;
+    .cartImg{
+      cursor: pointer;
+      .cartMoney {
+        padding: 0 20px 0 5px;
+      }}
+  }
+
+  .headerLeft {
+    display: flex;
+    align-content: center;
+    margin-bottom: 15px;
+
+    .headerInfo {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin: 0 0 0 15px;
+
+      .reactSneakers {
+        text-transform: uppercase;
+        margin: 0;
+        padding: 0;
+
+      }
+
+      .sneakerShop {
+        margin: 0;
+        padding: 0;
+        color: rgba(63, 63, 63, 0.6);
+      }
+    }
+  }
+}
