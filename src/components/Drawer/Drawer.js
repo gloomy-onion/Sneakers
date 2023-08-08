@@ -1,5 +1,4 @@
 import React from 'react'
-import orderCart from '../../img/orderCart.svg'
 import styles from './Drawer.module.scss'
 import CartItem from './CartItems/CartItem'
 import emptyCart from '../../img/emptyCart.png'
@@ -15,29 +14,33 @@ const Drawer = (props) => {
         </h2>
 
         {items ? (
-          <div className={styles.emptyCart}>
-            <img src={emptyCart} className={styles.emptyCartImg} />
-            <h3>Ваша корзина пустая </h3>
-            <button className={styles.greenCartButton} onClick={onClose}>
-              Вернуться назад
-            </button>
-          </div>
+          <>
+            <div className={styles.emptyCart}>
+              <img src={emptyCart} className={styles.emptyCartImg} />
+              <h3>Ваша корзина пустая </h3>
+              <button className={styles.greenCartButton} onClick={onClose}>
+                Вернуться назад
+              </button>
+            </div>
+          </>
         ) : (
-          <div className={styles.cartItems}>
-            {items.map((item, index) => {
-              return (
-                <CartItem
-                  key={index}
-                  id={item.id}
-                  image={item.image}
-                  price={item.price}
-                  name={item.name}
-                  onRemove={() => onRemove(item.id)}
-                />
-              )
-            })}
-          </div>
-        //я донт андерстенд почему у меня показывает только пустую корзину вот зе фак
+          <>
+            <div className={styles.cartItems}>
+              {items.map((item, index) => {
+                return (
+                  <CartItem
+                    key={index}
+                    id={item.id}
+                    image={item.image}
+                    price={item.price}
+                    name={item.name}
+                    onRemove={() => onRemove(item.id)}
+                  />
+                )
+              })}
+            </div>
+          </>
+          //я донт андерстенд почему у меня показывает только пустую корзину вот зе фак
         )}
       </div>
       <div className={styles.cartBottom}>

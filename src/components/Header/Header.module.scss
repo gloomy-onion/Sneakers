@@ -10,11 +10,47 @@
     justify-content: space-between;
     align-items: center;
     list-style-type: none;
-    .cartImg{
+    width: 200px;
+
+    .cartImg {
       cursor: pointer;
+      padding: 0;
+
       .cartMoney {
         padding: 0 20px 0 5px;
-      }}
+      }
+    }
+
+    .profileHeader {
+      padding: 0;
+      align-self: center;
+    }
+
+    .favouriteBtnHeader {
+      position: absolute;
+      width: 25px;
+      height: 25px;
+    }
+
+    .favouriteBtnHeader:before, .favouriteBtnHeader:after {
+      position: absolute;
+      content: "";
+      left: 15px;
+      top: 0;
+      width: 15px;
+      height: 23px;
+      background: #939394;
+      border-radius: 20px 20px 0 0;
+      transform: rotate(-45deg);
+      transform-origin: 0 100%;
+      margin: 5px;
+    }
+
+    .favouriteBtnHeader:after {
+      left: 0;
+      transform: rotate(45deg);
+      transform-origin: 100% 100%;
+    }
   }
 
   .headerLeft {

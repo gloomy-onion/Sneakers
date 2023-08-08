@@ -20,7 +20,8 @@ const Header = (props) => {
           <img alt={''} src={cart} />
           <span className={styles.cartMoney}>2673 руб.</span>
         </li>
-        <li className={''}>
+          <li className={styles.favouriteBtnHeader}></li>
+        <li className={styles.profileHeader}>
           <img alt={''} src={profile} />
         </li>
       </ul>
