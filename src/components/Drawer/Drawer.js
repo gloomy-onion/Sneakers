@@ -13,7 +13,7 @@ const Drawer = (props) => {
           <button className={styles.closeButton} onClick={onClose} />
         </h2>
 
-        {items ? (
+        {items.length <= 0 ? (
           <>
             <div className={styles.emptyCart}>
               <img src={emptyCart} className={styles.emptyCartImg} />
@@ -40,7 +40,6 @@ const Drawer = (props) => {
               })}
             </div>
           </>
-          //я донт андерстенд почему у меня показывает только пустую корзину вот зе фак
         )}
       </div>
       <div className={styles.cartBottom}>

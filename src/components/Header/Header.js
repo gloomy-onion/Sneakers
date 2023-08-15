@@ -3,6 +3,7 @@ import logo from '../../img/logo.svg'
 import cart from '../../img/cart.svg'
 import profile from '../../img/profile.svg'
 import styles from './Header.module.scss'
+import {Link} from 'react-router-dom';
 
 const Header = (props) => {
   const { onClickCart } = props
@@ -20,7 +21,7 @@ const Header = (props) => {
           <img alt={''} src={cart} />
           <span className={styles.cartMoney}>2673 руб.</span>
         </li>
-          <li className={styles.favouriteBtnHeader}></li>
+          <Link to={'/favourites'}><li className={styles.favouriteBtnHeader}></li></Link>
         <li className={styles.profileHeader}>
           <img alt={''} src={profile} />
         </li>

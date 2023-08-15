@@ -6,18 +6,22 @@
   border-bottom: 1px solid #dedede;
 
   .headerRight {
-    display: flex;
+    display: inline-grid;
+    grid-template-columns: 110px 60px 60px;
     justify-content: space-between;
+    align-content: center;
     align-items: center;
     list-style-type: none;
-    width: 200px;
+    max-width: 250px;
 
     .cartImg {
       cursor: pointer;
       padding: 0;
 
       .cartMoney {
-        padding: 0 20px 0 5px;
+        padding: 0;
+        margin: 0 0 0 10px;
+        text-align: center;
       }
     }
 
@@ -27,23 +31,24 @@
     }
 
     .favouriteBtnHeader {
-      position: absolute;
+      position: relative;
       width: 25px;
       height: 25px;
+      margin: 0 20px;
     }
 
     .favouriteBtnHeader:before, .favouriteBtnHeader:after {
       position: absolute;
       content: "";
-      left: 15px;
+      left: 14px;
       top: 0;
-      width: 15px;
-      height: 23px;
+      width: 14px;
+      height: 20px;
       background: #939394;
       border-radius: 20px 20px 0 0;
       transform: rotate(-45deg);
       transform-origin: 0 100%;
-      margin: 5px;
+
     }
 
     .favouriteBtnHeader:after {

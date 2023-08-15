@@ -1,18 +1,19 @@
 import React, { useState } from 'react'
 import styles from './Card.module.scss'
 import Button from '../common/Button/Button'
+import {getButtonStyle} from '../common/helpers';
 
 const Card = (props) => {
   const { image, name, price, onPlus } = props
-  const [isAdded, setIsAdded] = useState()
-  const [isFavourite, setIsFavourite] = useState()
+  const [isAdded, setIsAdded] = useState(false)
+  const [isFavourite, setIsFavourite] = useState(false)
 
   const onClickPlus = () => {
     onPlus({ image, name, price })
-    setIsAdded(!isAdded)
+    setIsAdded(prevState => !prevState)
   }
   const onFavourite = () => {
-    setIsFavourite(true)
+    setIsFavourite(prevState => !prevState)
   }
 
   return (
