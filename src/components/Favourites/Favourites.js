@@ -1,11 +1,24 @@
-import React from 'react';
-import Header from '../Header/Header';
+import React from 'react'
+import Card from '../Card/Card'
+import styles from '../MainPage/MainPage.module.scss'
 
 const Favourites = (props) => {
-
-  return <>
-    <Header/>
-    Тут будут закладки
-  </>
+  const { items, onFavourite } = props
+  return (
+    <div className={styles.sneakers}>
+      {items.map((card, index) => {
+        return (
+          <Card
+            key={card.id}
+            {...card}
+            alt={'Sneakers image'}
+            favourited={true}
+            onFavourite={onFavourite}
+          />
+        )
+      })}
+      <div />
+    </div>
+  )
 }
-export default Favourites;
+export default Favourites

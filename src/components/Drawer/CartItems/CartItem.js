@@ -5,7 +5,7 @@ const CartItem = (props) => {
   const { image, name, price, onRemove } = props
 
   return (
-    <div className={styles.cartItem} >
+    <div className={styles.cartItem}>
       <img alt={''} src={image} className={styles.cartItemImg} />
       <div className={styles.cartItemDescription}>
         <p className={styles.cartItemName}>{name}</p>

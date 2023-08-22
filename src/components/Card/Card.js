@@ -1,26 +1,39 @@
 import React, { useState } from 'react'
 import styles from './Card.module.scss'
 import Button from '../common/Button/Button'
-import {getButtonStyle} from '../common/helpers';
+import Loader from '../common/Loader'
 
 const Card = (props) => {
-  const { image, name, price, onPlus } = props
-  const [isAdded, setIsAdded] = useState(false)
-  const [isFavourite, setIsFavourite] = useState(false)
+  const {
+    id,
+    image,
+    name,
+    price,
+    onPlus,
+    favourited = false,
+    onFavourite,
+    added = false,
+    loading = false,
+  } = props
+  const [isAdded, setIsAdded] = useState(added)
+  const [isFavourite, setIsFavourite] = useState(favourited)
 
   const onClickPlus = () => {
-    onPlus({ image, name, price })
-    setIsAdded(prevState => !prevState)
+    onPlus({ id, image, name, price })
+    setIsAdded((prevState) => !prevState)
   }
-  const onFavourite = () => {
-    setIsFavourite(prevState => !prevState)
+  const onClickFavourite = () => {
+    onFavourite({ id, name, image, price })
+    setIsFavourite((prevState) => !prevState)
   }
 
-  return (
+  return loading ? (
+    <Loader className={styles.card} />
+  ) : (
     <div className={styles.card}>
       <div
         className={isFavourite ? styles.heartLiked : styles.heartUnliked}
-        onClick={onFavourite}
+        onClick={onClickFavourite}
       />
       <img alt={''} src={image} className={styles.cardImage} />
       <h5 className={styles.sneakerDescription}>{name}</h5>
@@ -29,10 +42,7 @@ const Card = (props) => {
           <span className={styles.price}>Цена:</span>
           <b>{price}</b>
         </div>
-        <Button
-          className={isAdded ? styles.tickMark : styles.addButton}
-          onClick={onClickPlus}
-        />
+        <Button type={isAdded ? 'check' : 'plus'} onClick={onClickPlus} />
       </div>
     </div>
   )

@@ -63,6 +63,10 @@
     align-content: center;
     margin-bottom: 15px;
 
+    .linkStyle {
+    text-decoration: none;
+    }
+
     .headerInfo {
       display: flex;
       flex-direction: column;
