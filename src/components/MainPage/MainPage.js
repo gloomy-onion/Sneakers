@@ -3,36 +3,33 @@ import styles from './MainPage.module.scss'
 import { CARDS_INFO } from '../constants'
 import Card from '../Card/Card'
 import SearchInput from '../Search/SearchInput'
+import { useState } from 'react'
 
 const MainPage = (props) => {
-  const {
-    searchValue,
-    onChangeSearchInput,
-    onAddToCart,
-    setSearchValue,
-    onFavourite,
-    cartItems,
-    isLoading,
-  } = props
+  const { onAddToCart, onFavourite, cartItems, isLoading } = props
+
+  const [searchValue, setSearchValue] = useState('')
+
+  const clearSearchValue = () => setSearchValue('')
+  const onChangeSearchInput = (e) => setSearchValue(e.target.value)
 
   const renderItems = () => {
-      const filteredItems= CARDS_INFO.filter((card) =>
-          card.name.toLowerCase().includes(searchValue.toLowerCase())
+    const filteredItems = CARDS_INFO.filter((card) =>
+      card.name.toLowerCase().includes(searchValue.toLowerCase())
+    )
+    return (isLoading ? [...Array(6)] : filteredItems).map((card, index) => {
+      return (
+        <Card
+          key={index}
+          added={cartItems.includes((item) => item.id === card.id)}
+          {...card}
+          alt={'Sneakers image'}
+          onFavourite={onFavourite}
+          onPlus={() => onAddToCart(card)}
+          loading={isLoading}
+        />
       )
-    return (isLoading ? [...Array(6)] : filteredItems)
-      .map((card, index) => {
-        return (
-          <Card
-            key={index}
-            added={cartItems.some((item) => item.id === card.id)}
-            {...card}
-            alt={'Sneakers image'}
-            onFavourite={onFavourite}
-            onPlus={() => onAddToCart(card)}
-            loading={isLoading}
-          />
-        )
-      })
+    })
   }
 
   return (
@@ -40,7 +37,7 @@ const MainPage = (props) => {
       <div className={styles.contentUpper}>
         <SearchInput
           searchValue={searchValue}
-          setSearchValue={setSearchValue}
+          clearSearchValue={clearSearchValue}
           onChangeSearchInput={onChangeSearchInput}
         />
       </div>

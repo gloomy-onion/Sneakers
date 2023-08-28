@@ -7,20 +7,13 @@ import styles from './index.module.scss'
 import Overlay from './components/common/Overlay/Overlay'
 import Drawer from './components/Drawer/Drawer'
 
-const AppContext = React.createContext({
-
-})
+const AppContext = React.createContext({})
 
 const App = (props) => {
   const [cartOpened, setCartOpened] = useState(false)
   const [cartItems, setCartItems] = useState([])
-  const [searchValue, setSearchValue] = useState('')
   const [favourites, setFavourites] = useState([])
   const [isLoading, setIsLoading] = useState(false)
-
-  const onChangeSearchInput = (e) => {
-    setSearchValue(e.target.value)
-  }
 
   const onAddToCart = (card) => {
     if (cartItems.find((item) => item.id === card.id)) {
@@ -47,50 +40,49 @@ const App = (props) => {
   }
 
   return (
-   <AppContext.Provider value={{cartItems, favourites}}> <BrowserRouter>
-      <div className={styles.wrapper}>
-        <Header onClickCart={() => setCartOpened(true)} />
-        <div>
-          {cartOpened && (
-            <Overlay>
-              <Drawer
-                onClose={() => setCartOpened(false)}
-                items={cartItems}
-                onRemove={onRemoveFromCart}
-              />
-            </Overlay>
-          )}{' '}
+    <AppContext.Provider value={{ cartItems, favourites }}>
+      {' '}
+      <BrowserRouter>
+        <div className={styles.wrapper}>
+          <Header onClickCart={() => setCartOpened(true)} />
+          <div>
+            {cartOpened && (
+              <Overlay>
+                <Drawer
+                  onClose={() => setCartOpened(false)}
+                  items={cartItems}
+                  onRemove={onRemoveFromCart}
+                />
+              </Overlay>
+            )}{' '}
+          </div>
+          <Routes>
+            <Route
+              path={'/favourites'}
+              exact={true}
+              element={
+                <Favourites
+                  items={favourites}
+                  onFavourite={(card) => onAddToFavourite(card)}
+                />
+              }
+            />
+            <Route
+              path={'/'}
+              exact={true}
+              element={
+                <MainPage
+                  cartItems={cartItems}
+                  isLoading={isLoading}
+                  onAddToCart={onAddToCart}
+                  onFavourite={(card) => onAddToFavourite(card)}
+                />
+              }
+            />
+          </Routes>
         </div>
-        <Routes>
-          <Route
-            path={'/favourites'}
-            exact={true}
-            element={
-              <Favourites
-                items={favourites}
-                onFavourite={(card) => onAddToFavourite(card)}
-              />
-            }
-          />
-          <Route
-            path={'/'}
-            exact={true}
-            element={
-              <MainPage
-                cartItems={cartItems}
-                isLoading={isLoading}
-                setSearchValue={setSearchValue}
-                onChangeSearchInput={onChangeSearchInput}
-                onAddToCart={onAddToCart}
-                searchValue={searchValue}
-                onFavourite={(card) => onAddToFavourite(card)}
-              />
-            }
-          />
-        </Routes>
-      </div>
-    </BrowserRouter>
-   </AppContext.Provider>
+      </BrowserRouter>
+    </AppContext.Provider>
   )
 }
 

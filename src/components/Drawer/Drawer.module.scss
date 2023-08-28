@@ -14,13 +14,7 @@
     justify-content: space-between;
   }
 
-  .cartBottomText {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    max-height: 30px;
-  }
+
 }
 
 .drawerCartName {
@@ -70,17 +64,6 @@
   }
 }
 
-.emptyCart {
-  display: flex;
-  flex-direction: column;
-  justify-items: center;
-  align-items: center;
-  align-content: center;
-  margin-top: 60px;
-  .emptyCartImg {
-    width: 125px;
-  }
-}
 
 .greenCartButton {
   border: 1px solid #93dc69;
@@ -92,4 +75,3 @@
   cursor: pointer;
 
 }
-

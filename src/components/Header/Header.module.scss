@@ -58,14 +58,16 @@
     }
   }
 
+
+  .linkStyle {
+    text-decoration: none;
+    color: inherit;
+  }
   .headerLeft {
     display: flex;
     align-content: center;
     margin-bottom: 15px;
 
-    .linkStyle {
-    text-decoration: none;
-    }
 
     .headerInfo {
       display: flex;

@@ -9,7 +9,8 @@ const Header = (props) => {
   const { onClickCart } = props
   return (
     <header className={styles.headerAll}>
-      <Link to={'/'} classname={styles.linkStyle}>
+      {/*вынести линк в отдельный компонент и сбросить все*/}
+      <Link to={'/'} className={styles.linkStyle}>
         <div className={styles.headerLeft}>
           <img alt={''} src={logo} />
           <div className={styles.headerInfo}>

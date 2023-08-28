@@ -1,9 +1,11 @@
 import searchMagnifier from '../../img/searchMagnifier.svg'
 import React from 'react'
 import styles from './SearchInput.module.scss'
+import { useState } from 'react'
 
 const SearchInput = (props) => {
-  const { searchValue, onChangeSearchInput, setSearchValue } = props
+  const { searchValue, onChangeSearchInput, clearSearchValue } = props
+
   return (
     <>
       <h1>
@@ -18,10 +20,7 @@ const SearchInput = (props) => {
           onChange={onChangeSearchInput}
         />
         {searchValue && (
-          <button
-            onClick={() => setSearchValue('')}
-            className={styles.clearBtn}
-          />
+          <button onClick={clearSearchValue} className={styles.clearBtn} />
         )}
       </div>
     </>

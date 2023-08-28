@@ -15,11 +15,13 @@ const Card = (props) => {
     added = false,
     loading = false,
   } = props
+
+  console.log(id, added)
   const [isAdded, setIsAdded] = useState(added)
   const [isFavourite, setIsFavourite] = useState(favourited)
 
   const onClickPlus = () => {
-    onPlus({ id, image, name, price })
+    onPlus()
     setIsAdded((prevState) => !prevState)
   }
   const onClickFavourite = () => {
@@ -27,9 +29,8 @@ const Card = (props) => {
     setIsFavourite((prevState) => !prevState)
   }
 
-  return loading ? (
-    <Loader className={styles.card} />
-  ) : (
+  if (loading) return <Loader className={styles.card} />
+  return (
     <div className={styles.card}>
       <div
         className={isFavourite ? styles.heartLiked : styles.heartUnliked}

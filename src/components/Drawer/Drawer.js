@@ -1,7 +1,8 @@
 import React from 'react'
 import styles from './Drawer.module.scss'
 import CartItem from './CartItems/CartItem'
-import emptyCart from '../../img/emptyCart.png'
+import EmptyCart from './EmptyCart/EmptyCart'
+import CartBottom from './CartBottom/CartBottom'
 
 const Drawer = (props) => {
   const { onClose, items, onRemove } = props
@@ -12,17 +13,8 @@ const Drawer = (props) => {
           Корзина
           <button className={styles.closeButton} onClick={onClose} />
         </h2>
-
-        {items.length <= 0 ? (
-          <>
-            <div className={styles.emptyCart}>
-              <img src={emptyCart} className={styles.emptyCartImg} />
-              <h3>Ваша корзина пустая </h3>
-              <button className={styles.greenCartButton} onClick={onClose}>
-                Вернуться назад
-              </button>
-            </div>
-          </>
+        {!items.length ? (
+          <EmptyCart onClose={onClose} />
         ) : (
           <>
             <div className={styles.cartItems}>
@@ -39,19 +31,9 @@ const Drawer = (props) => {
                 )
               })}
             </div>
+            <CartBottom />
           </>
         )}
-      </div>
-      <div className={styles.cartBottom}>
-        <div className={styles.cartBottomText}>
-          <p>Итого:</p>
-          <b>10 руб.</b>
-        </div>
-        <div className={styles.cartBottomText}>
-          <p>Налог:</p>
-          <b>1 руб.</b>
-        </div>
-        <button className={styles.greenCartButton}>Оформить заказ</button>
       </div>
     </div>
   )
