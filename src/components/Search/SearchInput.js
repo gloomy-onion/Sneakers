@@ -1,7 +1,6 @@
 import searchMagnifier from '../../img/searchMagnifier.svg'
 import React from 'react'
 import styles from './SearchInput.module.scss'
-import { useState } from 'react'
 
 const SearchInput = (props) => {
   const { searchValue, onChangeSearchInput, clearSearchValue } = props

@@ -7,7 +7,7 @@ const EmptyCart = (props) => {
   return (
     <>
       <div className={styles.emptyCart}>
-        <img src={emptyCart} className={styles.emptyCartImg} />
+        <img alt={''} src={emptyCart} className={styles.emptyCartImg} />
         <h3>Ваша корзина пустая </h3>
         <button className={styles.greenCartButton} onClick={onClose}>
           Вернуться назад
