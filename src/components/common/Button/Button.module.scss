@@ -1,0 +1,71 @@
+.button {
+  border: 1px solid #f2f2f2;
+  border-radius: 8px;
+  cursor: pointer;
+  height: 32px;
+  width: 32px;
+  opacity: 0.6;
+  background: none;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.plusStyle {
+  &:before, &:after {
+    position: absolute;
+    content: ' ';
+    height: 11px;
+    width: 1px;
+    background-color: #333;
+  }
+
+  &:before {
+    transform: rotate(90deg);
+  }
+}
+
+.checkStyle {
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  height: 32px;
+  width: 32px;
+  opacity: 0.6;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background: linear-gradient(180deg, #89F09C 0%, #3CC755 100%);
+
+  &:before {
+    position: absolute;
+    left: 12%;
+    top: 42%;
+    height: 30%;
+    width: 3px;
+    background-color: #ffffff;
+    content: "";
+    transform: translateX(10px) rotate(-45deg);
+    transform-origin: left bottom;
+  }
+
+  &:after {
+    position: absolute;
+    left: 12%;
+    bottom: 9px;
+    height: 3px;
+    width: 55%;
+    background-color: rgb(255, 255, 255);
+    content: "";
+    transform: translateX(10px) rotate(-45deg);
+    transform-origin: left bottom;
+    box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.1)
+  }
+}

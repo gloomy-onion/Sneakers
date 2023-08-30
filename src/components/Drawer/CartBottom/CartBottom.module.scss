@@ -1,0 +1,17 @@
+.greenCartButton {
+  border: 1px solid #93dc69;
+  border-radius: 15px;
+  width: 325px;
+  height: 55px;
+  background-color: #93dc69;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+.cartBottomText {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  max-height: 30px;
+}

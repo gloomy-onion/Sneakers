@@ -1,0 +1,24 @@
+
+
+.content {
+
+  .contentUpper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+
+  }
+
+
+  .sneakers {
+    display: grid;
+    grid-template-rows: 4fr 4fr;
+    grid-template-columns: 3fr 3fr 3fr;
+    column-gap: 10px;
+    row-gap: 15px;
+    align-content: center;
+    justify-items: center;
+  }
+}
+

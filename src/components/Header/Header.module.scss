@@ -1,0 +1,92 @@
+.headerAll {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  border-bottom: 1px solid #dedede;
+
+  .headerRight {
+    display: inline-grid;
+    grid-template-columns: 110px 60px 60px;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    list-style-type: none;
+    max-width: 250px;
+
+    .cartImg {
+      cursor: pointer;
+      padding: 0;
+
+      .cartMoney {
+        padding: 0;
+        margin: 0 0 0 10px;
+        text-align: center;
+      }
+    }
+
+    .profileHeader {
+      padding: 0;
+      align-self: center;
+    }
+
+    .favouriteBtnHeader {
+      position: relative;
+      width: 25px;
+      height: 25px;
+      margin: 0 20px;
+    }
+
+    .favouriteBtnHeader:before, .favouriteBtnHeader:after {
+      position: absolute;
+      content: "";
+      left: 14px;
+      top: 0;
+      width: 14px;
+      height: 20px;
+      background: #939394;
+      border-radius: 20px 20px 0 0;
+      transform: rotate(-45deg);
+      transform-origin: 0 100%;
+
+    }
+
+    .favouriteBtnHeader:after {
+      left: 0;
+      transform: rotate(45deg);
+      transform-origin: 100% 100%;
+    }
+  }
+
+
+  .linkStyle {
+    text-decoration: none;
+    color: inherit;
+  }
+  .headerLeft {
+    display: flex;
+    align-content: center;
+    margin-bottom: 15px;
+
+
+    .headerInfo {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin: 0 0 0 15px;
+
+      .reactSneakers {
+        text-transform: uppercase;
+        margin: 0;
+        padding: 0;
+
+      }
+
+      .sneakerShop {
+        margin: 0;
+        padding: 0;
+        color: rgba(63, 63, 63, 0.6);
+      }
+    }
+  }
+}
