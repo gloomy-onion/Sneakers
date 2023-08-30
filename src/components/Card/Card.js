@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
+import React, {useContext, useState} from 'react';
 import styles from './Card.module.scss'
 import Button from '../common/Button/Button'
 import Loader from '../common/Loader'
+import AppContext from '../common/context';
 
 const Card = (props) => {
+
   const {
     id,
     image,
@@ -12,17 +14,15 @@ const Card = (props) => {
     onPlus,
     favourited = false,
     onFavourite,
-    added = false,
     loading = false,
   } = props
 
-  console.log(id, added)
-  const [isAdded, setIsAdded] = useState(added)
+  const {isAddedToCart} = useContext(AppContext)
+
   const [isFavourite, setIsFavourite] = useState(favourited)
 
   const onClickPlus = () => {
     onPlus()
-    setIsAdded((prevState) => !prevState)
   }
   const onClickFavourite = () => {
     onFavourite({ id, name, image, price })
@@ -43,7 +43,7 @@ const Card = (props) => {
           <span className={styles.price}>Цена:</span>
           <b>{price}</b>
         </div>
-        <Button type={isAdded ? 'check' : 'plus'} onClick={onClickPlus} />
+        <Button type={isAddedToCart(id) ? 'check' : 'plus'} onClick={onClickPlus} />
       </div>
     </div>
   )

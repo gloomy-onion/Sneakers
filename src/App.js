@@ -6,14 +6,21 @@ import Header from './components/Header/Header'
 import styles from './index.module.scss'
 import Overlay from './components/common/Overlay/Overlay'
 import Drawer from './components/Drawer/Drawer'
-
-const AppContext = React.createContext({})
+import axios from 'axios'
+import AppContext from './components/common/context'
 
 const App = (props) => {
   const [cartOpened, setCartOpened] = useState(false)
   const [cartItems, setCartItems] = useState([])
   const [favourites, setFavourites] = useState([])
   const [isLoading, setIsLoading] = useState(false)
+  const [items, setItems] = useState([])
+
+  // React.useEffect(()=> {
+  //   axios.get('http://localhost:3000/').then((res)=> {
+  //     console.log(res.data)
+  //   })
+  // })
 
   const onAddToCart = (card) => {
     if (cartItems.find((item) => item.id === card.id)) {
@@ -39,9 +46,12 @@ const App = (props) => {
     }
   }
 
+  const isAddedToCart = (id) => {
+    return cartItems.includes((item) => item.id === id)
+  }
+
   return (
-    <AppContext.Provider value={{ cartItems, favourites }}>
-      {' '}
+    <AppContext.Provider value={{ cartItems, favourites, isAddedToCart }}>
       <BrowserRouter>
         <div className={styles.wrapper}>
           <Header onClickCart={() => setCartOpened(true)} />

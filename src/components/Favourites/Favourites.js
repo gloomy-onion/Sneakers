@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Card from '../Card/Card'
 import styles from '../MainPage/MainPage.module.scss'
+import AppContext from '../common/context'
 
 const Favourites = (props) => {
   const { items, onFavourite } = props
+  const { favourites } = useContext(AppContext)
   return (
     <div className={styles.sneakers}>
-      {items.map((card, index) => {
+      {favourites.map((card, index) => {
         return (
           <Card
             key={card.id}

@@ -6,7 +6,7 @@ import SearchInput from '../Search/SearchInput'
 import { useState } from 'react'
 
 const MainPage = (props) => {
-  const { onAddToCart, onFavourite, cartItems, isLoading } = props
+  const { onAddToCart, onFavourite, isLoading, isAddedToCart } = props
 
   const [searchValue, setSearchValue] = useState('')
 
@@ -21,7 +21,6 @@ const MainPage = (props) => {
       return (
         <Card
           key={index}
-          added={cartItems.includes((item) => item.id === card.id)}
           {...card}
           alt={'Sneakers image'}
           onFavourite={onFavourite}
