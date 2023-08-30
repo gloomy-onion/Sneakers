@@ -6,7 +6,6 @@ import Header from './components/Header/Header'
 import styles from './index.module.scss'
 import Overlay from './components/common/Overlay/Overlay'
 import Drawer from './components/Drawer/Drawer'
-import axios from 'axios'
 import AppContext from './components/common/context'
 
 const App = (props) => {
@@ -16,11 +15,12 @@ const App = (props) => {
   const [isLoading, setIsLoading] = useState(false)
   const [items, setItems] = useState([])
 
-  // React.useEffect(()=> {
-  //   axios.get('http://localhost:3000/').then((res)=> {
-  //     console.log(res.data)
-  //   })
-  // })
+  React.useEffect(()=> {
+    fetch('http://localhost:3000/items').then((res)=> {
+      return res.json()
+    }).then((res)=> {
+    setItems(res)})
+  }, [])
 
   const onAddToCart = (card) => {
     if (cartItems.find((item) => item.id === card.id)) {
@@ -82,6 +82,7 @@ const App = (props) => {
               exact={true}
               element={
                 <MainPage
+                    items={items}
                   cartItems={cartItems}
                   isLoading={isLoading}
                   onAddToCart={onAddToCart}

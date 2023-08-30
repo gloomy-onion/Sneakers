@@ -18,6 +18,8 @@ const Card = (props) => {
 
   const { isAddedToCart } = useContext(AppContext)
 
+  const isAdded = isAddedToCart(id)
+
   const [isFavourite, setIsFavourite] = useState(favourited)
 
   const onClickPlus = () => {
@@ -43,8 +45,8 @@ const Card = (props) => {
           <b>{price}</b>
         </div>
         <Button
-          type={isAddedToCart(id) ? 'check' : 'plus'}
-          onClick={onClickPlus}
+            onClick={onClickPlus}
+          type={isAdded ? 'check' : 'plus'}
         />
       </div>
     </div>

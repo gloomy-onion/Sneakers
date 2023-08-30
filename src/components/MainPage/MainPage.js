@@ -6,7 +6,7 @@ import SearchInput from '../Search/SearchInput'
 import { useState } from 'react'
 
 const MainPage = (props) => {
-  const { onAddToCart, onFavourite, isLoading, isAddedToCart } = props
+  const { onAddToCart, onFavourite, isLoading, items } = props
 
   const [searchValue, setSearchValue] = useState('')
 
@@ -14,7 +14,7 @@ const MainPage = (props) => {
   const onChangeSearchInput = (e) => setSearchValue(e.target.value)
 
   const renderItems = () => {
-    const filteredItems = CARDS_INFO.filter((card) =>
+    const filteredItems = items.filter((card) =>
       card.name.toLowerCase().includes(searchValue.toLowerCase())
     )
     return (isLoading ? [...Array(6)] : filteredItems).map((card, index) => {
