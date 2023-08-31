@@ -15,25 +15,61 @@ const App = (props) => {
   const [isLoading, setIsLoading] = useState(false)
   const [items, setItems] = useState([])
 
-  React.useEffect(()=> {
-    fetch('http://localhost:3000/items').then((res)=> {
-      return res.json()
-    }).then((res)=> {
-    setItems(res)})
+  React.useEffect(() => {
+    fetch('http://localhost:3000/items')
+      .then((res) => {
+        return res.json()
+      })
+      .then((res) => {
+        setItems(
+          res.map((card) => {
+            return {
+              ...card,
+              added: cartItems.includes((item) => item.id === card.id),
+            }
+          })
+        )
+      })
   }, [])
 
-  const onAddToCart = (card) => {
-    if (cartItems.find((item) => item.id === card.id)) {
-      setCartItems((prevState) =>
-        prevState.filter((item) => item.id !== card.id)
-      )
-    } else {
-      setCartItems((prevState) => [...prevState, card])
+    const isAdded = (card) => {
+        return cartItems.includes((item) => item.id === card.id)
     }
-  }
 
   const onRemoveFromCart = (id) => {
-    setCartItems((prevState) => prevState.filter((item) => item.id !== id))
+      setCartItems((prevState) => prevState.filter((item) => item.id !== id));
+  }
+
+    const onAddToCart = (card) => {
+        if (cartItems.find((item) => item.id === card.id)) {
+            onRemoveFromCart(card.id)
+            setItems((prevState) =>
+                prevState.map((item) => {
+                    if (item.id === card.id) {
+                        return {
+                            ...item,
+                            added: false,
+                        }
+                    } else {
+                        return item
+                    }
+                })
+            )
+        } else {
+      setCartItems((prevState) => [...prevState, card])
+      setItems((prevState) =>
+          prevState.map((item) => {
+            if (item.id === card.id) {
+              return {
+                ...item,
+                added: true,
+              }
+            } else {
+              return item
+            }
+          })
+      )
+    }
   }
 
   const onAddToFavourite = (card) => {
@@ -46,12 +82,8 @@ const App = (props) => {
     }
   }
 
-  const isAddedToCart = (id) => {
-    return cartItems.includes((item) => item.id === id)
-  }
-
   return (
-    <AppContext.Provider value={{ cartItems, favourites, isAddedToCart }}>
+    <AppContext.Provider value={{ cartItems, favourites }}>
       <BrowserRouter>
         <div className={styles.wrapper}>
           <Header onClickCart={() => setCartOpened(true)} />
@@ -82,7 +114,8 @@ const App = (props) => {
               exact={true}
               element={
                 <MainPage
-                    items={items}
+                  added={isAdded}
+                  items={items}
                   cartItems={cartItems}
                   isLoading={isLoading}
                   onAddToCart={onAddToCart}

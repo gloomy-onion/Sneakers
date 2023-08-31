@@ -2,7 +2,6 @@ import React, { useContext, useState } from 'react'
 import styles from './Card.module.scss'
 import Button from '../common/Button/Button'
 import Loader from '../common/Loader'
-import AppContext from '../common/context'
 
 const Card = (props) => {
   const {
@@ -14,11 +13,8 @@ const Card = (props) => {
     favourited = false,
     onFavourite,
     loading = false,
+    added,
   } = props
-
-  const { isAddedToCart } = useContext(AppContext)
-
-  const isAdded = isAddedToCart(id)
 
   const [isFavourite, setIsFavourite] = useState(favourited)
 
@@ -44,10 +40,7 @@ const Card = (props) => {
           <span className={styles.price}>Цена:</span>
           <b>{price}</b>
         </div>
-        <Button
-            onClick={onClickPlus}
-          type={isAdded ? 'check' : 'plus'}
-        />
+        <Button onClick={onClickPlus} type={added ? 'check' : 'plus'} />
       </div>
     </div>
   )
