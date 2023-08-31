@@ -39,6 +39,8 @@ const App = (props) => {
   const onRemoveFromCart = (id) => {
       setCartItems((prevState) => prevState.filter((item) => item.id !== id));
   }
+    //эта функция почему то не отрабатывает в самой корзине, ну точнее она отрабатывает, но состояние
+    //кнопки не меняется
 
     const onAddToCart = (card) => {
         if (cartItems.find((item) => item.id === card.id)) {
