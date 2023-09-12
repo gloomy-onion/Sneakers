@@ -7,6 +7,7 @@ import styles from './index.module.scss'
 import Overlay from './components/common/Overlay/Overlay'
 import Drawer from './components/Drawer/Drawer'
 import AppContext from './components/common/context'
+import axios from 'axios';
 
 const App = (props) => {
   const [cartOpened, setCartOpened] = useState(false)
@@ -32,12 +33,15 @@ const App = (props) => {
       })
   }, [])
 
+
+
     const isAdded = (card) => {
         return cartItems.includes((item) => item.id === card.id)
     }
 
   const onRemoveFromCart = (id) => {
-      setCartItems((prevState) => prevState.filter((item) => item.id !== id));
+      setCartItems((prevState) => prevState.filter((item) => item.id !== id)
+      );
   }
     //эта функция почему то не отрабатывает в самой корзине, ну точнее она отрабатывает, но состояние
     //кнопки не меняется
@@ -75,17 +79,22 @@ const App = (props) => {
   }
 
   const onAddToFavourite = (card) => {
-    if (favourites.find((favCard) => favCard.id === card.id)) {
-      setFavourites((prevState) =>
-        prevState.filter((item) => item.id !== card.id)
-      )
-    } else {
-      setFavourites((prevState) => [...prevState, card])
-    }
+      try {
+          if (favourites.find((favCard) => favCard.id === card.id)) {
+              setFavourites((prevState) =>
+                  prevState.filter((item) => item.id !== card.id)
+              )
+          } else {
+              setFavourites((prevState) => [...prevState, card])
+          }
+      } catch (error) {
+          alert('Не удалось добавить в закладки')
+      }
+
   }
 
   return (
-    <AppContext.Provider value={{ cartItems, favourites }}>
+    <AppContext.Provider value={{ cartItems, favourites, setCartOpened }}>
       <BrowserRouter>
         <div className={styles.wrapper}>
           <Header onClickCart={() => setCartOpened(true)} />

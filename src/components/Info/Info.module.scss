@@ -1,0 +1,25 @@
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  align-content: center;
+  margin-top: 160px;
+  .infoImg {
+    width: 125px;
+  }
+}
+
+.greenButton {
+  border: 1px solid #93dc69;
+  border-radius: 15px;
+  width: 325px;
+  height: 55px;
+  background-color: #93dc69;
+  color: #FFFFFF;
+  cursor: pointer;
+
+}
+.description {
+  text-align: center;
+}
