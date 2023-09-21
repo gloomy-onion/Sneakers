@@ -1,14 +1,18 @@
-import React, {useState} from 'react';
+import React, { useContext, useState } from 'react'
 import styles from './Drawer.module.scss'
 import CartItem from './CartItems/CartItem'
 import CartBottom from './CartBottom/CartBottom'
 import Info from '../Info/Info'
 import emptyCart from './../../img/emptyCart.png'
+import orderCompleted from './../../img/orderCompleted.svg'
+import AppContext from '../common/context'
 
 const Drawer = (props) => {
+  const { setCartItems } = useContext(AppContext)
   const [isOrderCompleted, setIsOrderCompleted] = useState(false)
   const onClickOrder = () => {
     setIsOrderCompleted(true)
+    setCartItems([])
   }
 
   const { onClose, items, onRemove } = props
@@ -21,9 +25,13 @@ const Drawer = (props) => {
         </h2>
         {!items.length ? (
           <Info
-            title={'Ваша корзина пуста'}
-            description={'Добавьте кроссовки в корзину, чтобы сделать заказ'}
-            image={emptyCart}
+            title={isOrderCompleted ? 'Заказ оформлен' : 'Ваша корзина пуста'}
+            description={
+              isOrderCompleted
+                ? 'Ваш заказ скоро будет передан в доставку'
+                : 'Добавьте кроссовки в корзину, чтобы сделать заказ'
+            }
+            image={isOrderCompleted ? orderCompleted : emptyCart}
           />
         ) : (
           <>
@@ -41,7 +49,7 @@ const Drawer = (props) => {
                 )
               })}
             </div>
-            <CartBottom onClick={onClickOrder}/>
+            <CartBottom onClick={onClickOrder} />
           </>
         )}
       </div>

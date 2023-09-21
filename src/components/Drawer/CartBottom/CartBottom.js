@@ -1,7 +1,8 @@
 import React from 'react'
 import styles from './CartBottom.module.scss'
 
-const CartBottom = () => {
+const CartBottom = (props) => {
+  const { onClick } = props
   return (
     <div className={styles.cartBottom}>
       <div className={styles.cartBottomText}>
@@ -12,7 +13,9 @@ const CartBottom = () => {
         <p>Налог:</p>
         <b>1 руб.</b>
       </div>
-      <button className={styles.greenCartButton}>Оформить заказ</button>
+      <button onClick={onClick} className={styles.greenCartButton}>
+        Оформить заказ
+      </button>
     </div>
   )
 }
