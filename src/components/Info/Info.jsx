@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import styles from './Info.module.scss';
 import AppContext from '../common/context';
 
 const Info = (props) => {
-    const {setCartOpened} = React.useContext(AppContext)
+    const {setCartOpened} = useContext(AppContext)
     const { image, title, description } = props
     return (
         <>

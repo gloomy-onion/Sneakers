@@ -1,10 +1,10 @@
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import styles from './MainPage.module.scss'
 import Card from '../Card/Card'
 import SearchInput from '../Search/SearchInput'
 
 const MainPage = (props) => {
-  const { onAddToCart, onFavourite, isLoading, items, added } = props
+  const { onAddToCart, onFavourite, isLoading, items } = props
 
   const [filteredItems, setFilteredItems] = useState([])
   const [searchValue, setSearchValue] = useState('')
@@ -19,12 +19,16 @@ const MainPage = (props) => {
   const clearSearchValue = (e) => {
     setSearchValue('')
     setFilteredItems([])
-    //не показыват почему то после этого items, а показывает предыдущие офильтрованные
   }
 
   const onChangeSearchInput = (e) => {
-    setSearchValue(e.target.value)
-    onSearch(e.target.value)
+    const value = e.target.value
+    if (value) {
+      setSearchValue(value)
+      onSearch(value)
+    } else {
+      clearSearchValue()
+    }
   }
 
   const renderItems = () => {
@@ -33,7 +37,7 @@ const MainPage = (props) => {
     return (isLoading ? [...Array(6)] : resultItems).map((card, index) => {
       return (
         <Card
-          added={added}
+          added={card.added}
           key={index}
           {...card}
           alt={'Sneakers image'}

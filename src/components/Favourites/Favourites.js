@@ -4,7 +4,7 @@ import styles from '../MainPage/MainPage.module.scss'
 import AppContext from '../common/context'
 
 const Favourites = (props) => {
-  const { items, onFavourite } = props
+  const { onFavourite } = props
   const { favourites } = useContext(AppContext)
   return (
     <div className={styles.sneakers}>
