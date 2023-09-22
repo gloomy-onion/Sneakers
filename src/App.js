@@ -52,20 +52,35 @@ const App = (props) => {
   //    тут у меня получилось, пока только не получается с флажком added
 
 
-  const onRemoveFromCart = (id) => {
-    setCartItems((prevState) => prevState.filter((item) => item.id !== id))
-    setItems((prevState) =>
-      prevState.map((item) => {
-        if (item.id === id) {
-          return {
-            ...item,
-            added: false,
+  const onRemoveFromCart = (card, id) => {
+
+    console.log(cartItems);
+    fetch('http://localhost:3000/cart', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+      body: JSON.stringify({ id: card.id }),
+    })
+        .then((res) => {
+          return res.json()
+        })
+        .then((json) => {
+          if (json.status === 'success') {
+            setCartItems((prevState) => prevState.filter(item => item.id !== card.id));
+            setItems((prevState) => prevState.map((item) => {
+                  if (item.id === id) {
+                    return {
+                      ...item,
+                      added: false,
+                    }
+                  } else {
+                    return item
+                  }
+                })
+            )
           }
-        } else {
-          return item
-        }
-      })
-    )
+        })
   }
 
   const isItemAddedCartFav = (arr, card) => {
