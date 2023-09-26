@@ -17,7 +17,7 @@ const Header = (props) => {
             <h3 className={styles.reactSneakers}>React Sneakers</h3>
             <p className={styles.sneakerShop}>Магазин кроссовок</p>
           </div>
-        </div>{' '}
+        </div>
       </Link>
       <ul className={styles.headerRight}>
         <li className={styles.cartImg} onClick={onClickCart}>
