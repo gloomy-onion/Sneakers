@@ -7,7 +7,6 @@ import styles from './index.module.scss'
 import Overlay from './components/common/Overlay/Overlay'
 import Drawer from './components/Drawer/Drawer'
 import AppContext from './components/common/context'
-import axios from 'axios'
 
 const App = (props) => {
   const [cartOpened, setCartOpened] = useState(false)
@@ -33,28 +32,7 @@ const App = (props) => {
       })
   }, [])
 
-  useEffect(() => {
-    fetch('http://localhost:3000/cart')
-      .then((res) => {
-        return res.json()
-      })
-      .then((res) => {
-        setCartItems(
-          res.map((card) => {
-            return {
-              ...card,
-              added: cartItems.includes((item) => item.id === card.id),
-            }
-          })
-        )
-      })
-  }, [])
-  //    тут у меня получилось, пока только не получается с флажком added
-
-
-  const onRemoveFromCart = (card, id) => {
-
-    console.log(cartItems);
+  const onRemoveFromCart = (card) => {
     fetch('http://localhost:3000/cart', {
       method: 'DELETE',
       headers: {
@@ -62,37 +40,31 @@ const App = (props) => {
       },
       body: JSON.stringify({ id: card.id }),
     })
-        .then((res) => {
-          return res.json()
-        })
-        .then((json) => {
-          if (json.status === 'success') {
-            setCartItems((prevState) => prevState.filter(item => item.id !== card.id));
-            setItems((prevState) => prevState.map((item) => {
-                  if (item.id === id) {
-                    return {
-                      ...item,
-                      added: false,
-                    }
-                  } else {
-                    return item
-                  }
-                })
-            )
-          }
-        })
+      .then((res) => {
+        return res.json()
+      })
+      .then((json) => {
+        if (json.status === 'success') {
+          setCartItems((prevState) => {
+            return prevState.filter((item) => item.id !== card.id)
+          })
+          setItems((prevState) =>
+              getUpdatedItems(prevState, card, false)
+          )
+        }
+      })
   }
 
   const isItemAddedCartFav = (arr, card) => {
     return arr.find((item) => item.id === card.id)
   }
 
-  const getUpdatedItems = (prevState, card) => {
+  const getUpdatedItems = (prevState, card, added) => {
     return prevState.map((item) => {
       if (item.id === card.id) {
         return {
           ...item,
-          added: true,
+          added,
         }
       } else {
         return item
@@ -103,7 +75,7 @@ const App = (props) => {
   const onAddToCart = (card) => {
     try {
       if (isItemAddedCartFav(cartItems, card)) {
-        onRemoveFromCart(card.id)
+        onRemoveFromCart(card)
       } else {
         fetch('http://localhost:3000/cart', {
           method: 'POST',
@@ -118,9 +90,7 @@ const App = (props) => {
           .then((json) => {
             if (json.status === 'success') {
               setCartItems((prevState) => [...prevState, card])
-              setItems((prevState) =>
-                getUpdatedItems(prevState, card, true || false)
-              )
+              setItems((prevState) => getUpdatedItems(prevState, card, true))
             }
           })
       }
@@ -155,7 +125,6 @@ const App = (props) => {
               <Overlay>
                 <Drawer
                   onClose={() => setCartOpened(false)}
-                  items={cartItems}
                   onRemove={onRemoveFromCart}
                 />
               </Overlay>

@@ -6,16 +6,34 @@ import Info from '../Info/Info'
 import emptyCart from './../../img/emptyCart.png'
 import orderCompleted from './../../img/orderCompleted.svg'
 import AppContext from '../common/context'
+import { useEffect } from 'react'
 
 const Drawer = (props) => {
-  const { setCartItems } = useContext(AppContext)
+  const { setCartItems, cartItems } = useContext(AppContext)
   const [isOrderCompleted, setIsOrderCompleted] = useState(false)
   const onClickOrder = () => {
     setIsOrderCompleted(true)
     setCartItems([])
   }
 
-  const { onClose, items, onRemove } = props
+  useEffect(() => {
+    fetch('http://localhost:3000/cart')
+      .then((res) => {
+        return res.json()
+      })
+      .then((res) => {
+        setCartItems(
+          res.map((card) => {
+            return {
+              ...card,
+              added: cartItems.includes((item) => item.id === card.id),
+            }
+          })
+        )
+      })
+  }, [])
+
+  const { onClose, onRemove } = props
   return (
     <div className={styles.drawer}>
       <div className={styles.cartTop}>
@@ -23,7 +41,7 @@ const Drawer = (props) => {
           Корзина
           <button className={styles.closeButton} onClick={onClose} />
         </h2>
-        {!items.length ? (
+        {!cartItems.length ? (
           <Info
             title={isOrderCompleted ? 'Заказ оформлен' : 'Ваша корзина пуста'}
             description={
@@ -36,7 +54,7 @@ const Drawer = (props) => {
         ) : (
           <>
             <div className={styles.cartItems}>
-              {items.map((item, index) => {
+              {cartItems.map((item, index) => {
                 return (
                   <CartItem
                     key={index}
@@ -44,7 +62,7 @@ const Drawer = (props) => {
                     image={item.image}
                     price={item.price}
                     name={item.name}
-                    onRemove={() => onRemove(item.id)}
+                    onRemove={() => onRemove(item)}
                   />
                 )
               })}
