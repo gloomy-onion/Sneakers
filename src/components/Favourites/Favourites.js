@@ -4,8 +4,7 @@ import styles from '../MainPage/MainPage.module.scss'
 import AppContext from '../common/context'
 
 const Favourites = (props) => {
-  const { onFavourite } = props
-  const { favourites } = useContext(AppContext)
+  const { favourites, onAddToFavourite } = useContext(AppContext)
   return (
     <div className={styles.sneakers}>
       {favourites.map((card, index) => {
@@ -15,7 +14,7 @@ const Favourites = (props) => {
             {...card}
             alt={'Sneakers image'}
             favourited={true}
-            onFavourite={onFavourite}
+            onFavourite={(card) => onAddToFavourite(card)}
           />
         )
       })}

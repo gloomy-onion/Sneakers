@@ -10,3 +10,7 @@ export const getButtonStyle = (type) => {
       return 'plusStyle'
   }
 }
+
+export const isItemAddedCartFav = (arr, card) => {
+  return arr.find((item) => item.id === card.id)
+}
