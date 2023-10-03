@@ -8,9 +8,9 @@ import Overlay from './components/common/Overlay/Overlay'
 import Drawer from './components/Drawer/Drawer'
 import AppContext from './components/common/context'
 import axios from 'axios'
-import { isItemAddedCartFav } from './../src/components/common/helpers'
+import { isItemAddedCartFav } from './components/common/helpers'
 
-const App = (props) => {
+const App = () => {
   const [cartOpened, setCartOpened] = useState(false)
   const [cartItems, setCartItems] = useState([])
   const [favourites, setFavourites] = useState([])
@@ -31,23 +31,21 @@ const App = (props) => {
   }, [])
 
   const onClickAddToCart = (card) => {
-    axios.post('http://localhost:3000/cart', card).then((json) => {
+    axios.post('http://localhost:3000/cart', card).then(() => {
       setCartItems((prevState) => [...prevState, card])
       setItems((prevState) => getUpdatedItems(prevState, card, true))
     })
   }
 
-  const onRemoveFromCart = (card) => {
-    axios.delete('http://localhost:3000/cart').then((json) => {
-      setCartItems((prevState) => {
-        return prevState.filter((item) => item.id !== card.id)
-      })
-      setItems((prevState) => getUpdatedItems(prevState, card, false))
-    })
-
+  const onRemoveFromCart = () => {
+    // axios.delete('http://localhost:3000/cart').then((json) => {
+    //   setCartItems((prevState) => {
+    //     return prevState.filter((item) => item.id !== card.id)
+    //   })
+    //   setItems((prevState) => getUpdatedItems(prevState, card, false))
+    // })
     //блин ну может я тупица вообще последняя, но при открытии корзины он сам отрабатывает
     //без нажатия кнопок, при этом если я переношу axios.delete в функцию onAddToCart он отрабатывает нормально
-
     // fetch('http://localhost:3000/cart', {
     //     method: 'DELETE',
     //     headers: {
@@ -84,7 +82,12 @@ const App = (props) => {
   const onAddToCart = (card) => {
     try {
       if (isItemAddedCartFav(cartItems, card)) {
-        onRemoveFromCart(card)
+        axios.delete('http://localhost:3000/cart').then(() => {
+          setCartItems((prevState) => {
+            return prevState.filter((item) => item.id !== card.id)
+          })
+          setItems((prevState) => getUpdatedItems(prevState, card, false))
+        })
       } else {
         onClickAddToCart(card)
 

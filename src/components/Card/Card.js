@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import styles from './Card.module.scss'
 import Button from '../common/Button/Button'
 import Loader from '../common/Loader'
@@ -38,7 +38,7 @@ const Card = (props) => {
       <div className={styles.cardBottom}>
         <div className={styles.cardBottomText}>
           <span className={styles.price}>Цена:</span>
-          <b>{price}</b>
+          <b>{price} руб.</b>
         </div>
         <Button onClick={onClickPlus} type={added ? 'check' : 'plus'} />
       </div>
