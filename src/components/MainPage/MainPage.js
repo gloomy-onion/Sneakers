@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import styles from './MainPage.module.scss'
 import Card from '../Card/Card'
 import SearchInput from '../Search/SearchInput'
+import AppContext from '../common/context'
 
 const MainPage = (props) => {
-  const { onAddToCart, onFavourite, isLoading, items } = props
+  const { onAddToCart, onAddToFavourite, isLoading, items } =
+    useContext(AppContext)
 
   const [filteredItems, setFilteredItems] = useState([])
   const [searchValue, setSearchValue] = useState('')
@@ -41,7 +43,7 @@ const MainPage = (props) => {
           key={index}
           {...card}
           alt={'Sneakers image'}
-          onFavourite={onFavourite}
+          onFavourite={(card) => onAddToFavourite(card)}
           onPlus={() => onAddToCart(card)}
           loading={isLoading}
         />
